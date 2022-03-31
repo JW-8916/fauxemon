@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Builder</title>
+    <script src="./views/js/Fakemon.js" type="text/javascript"></script>
+    <script src="./views/js/Team.js" type="text/javascript"></script>
+    <script src="./views/js/ajax_util.js" type="text/javascript"></script>
+    <script src="./views/js/new_team_form.js" type="text/javascript"></script>
+    <script src="./views/js/team_util.js" type="text/javascript"></script>
+</head>
+<body>
+    <a href="/">Home</a>
+    <h2>Teams</h2>
+    <section id="teams">
+        <!--This section is all generated from local storage-->
+    </section>
+    <button id="newButton">New Team</button>
+    <section id="form" style="display: none">
+        <!--This section is where the new form should be generated-->
+        Team Name: <input type="text" name="teamName" id="teamName"></br>
+        <hr>
+
+        Fakemon 1: <select id="p1" name="p1"></select></br>
+        <div id="p1BaseStats">  </div>
+        Ability: <select id="p1Ability" name="p1Ability"></select><br>
+        Moves:<br>
+        <select id="p1Move1" name="p1Move1"></select><br>
+        <select id="p1Move2" name="p1Move2"></select><br>
+        <select id="p1Move3" name="p1Move3"></select><br>
+        <select id="p1Move4" name="p1Move4"></select><br>
+        EVs: <section>
+            HP:<input type="range" value=0 min="0" max="255" id="p1HpEV" name="p1HpEV"><span id="p1HpEVOutput">0</span><br>
+            Atk:<input type="range" value=0 min="0" max="255" id="p1AttackEV" name="p1AttackEV"><span id="p1AttackEVOutput">0</span><br>
+            Def:<input type="range" value=0 min="0" max="255" id="p1DefenseEV" name="p1DefenseEV"><span id="p1DefenseEVOutput">0</span><br>
+            SpAtk:<input type="range" value=0 min="0" max="255" id="p1SpAttackEV" name="p1SpAttackEV"><span id="p1SpAttackEVOutput">0</span><br>
+            SpDef:<input type="range" value=0 min="0" max="255" id="p1SpDefenseEV" name="p1SpDefenseEV"><span id="p1SpDefenseEVOutput">0</span><br>
+            Speed:<input type="range" value=0 min="0" max="255" id="p1SpeedEV" name="p1SpeedEV"><span id="p1SpeedEVOutput">0</span><br>
+        </section><br>
+        Running stats: <span id="p1CalculatedStats"></span>
+        <hr>
+
+        Fakemon 2: <select id="p2" name="p2"></select></br>
+        <div id="p2BaseStats"></div>
+        Ability: <select id="p2Ability" name="p2Ability"></select><br>
+        Moves:<br>
+        <select id="p2Move1" name="p2Move1"></select><br>
+        <select id="p2Move2" name="p2Move2"></select><br>
+        <select id="p2Move3" name="p2Move3"></select><br>
+        <select id="p2Move4" name="p2Move4"></select><br>
+        EVs: <section>
+            HP:<input type="range" value=0 min="0" max="255" id="p2HpEV" name="p2HpEV"><span id="p2HpEVOutput">0</span><br>
+            Atk:<input type="range" value=0 min="0" max="255" id="p2AttackEV" name="p2AttackEV"><span id="p2AttackEVOutput">0</span><br>
+            Def:<input type="range" value=0 min="0" max="255" id="p2DefenseEV" name="p2DefenseEV"><span id="p2DefenseEVOutput">0</span><br>
+            SpAtk:<input type="range" value=0 min="0" max="255" id="p2SpAttackEV" name="p2SpAttackEV"><span id="p2SpAttackEVOutput">0</span><br>
+            SpDef:<input type="range" value=0 min="0" max="255" id="p2SpDefenseEV" name="p2SpDefenseEV"><span id="p2SpDefenseEVOutput">0</span><br>
+            Speed:<input type="range" value=0 min="0" max="255" id="p2SpeedEV" name="p2SpeedEV"><span id="p2SpeedEVOutput">0</span><br>
+        </section><br>
+        Running stats: <span id="p2CalculatedStats"></span>
+        <hr>
+
+        Fakemon 3: <select id="p3" name="p3"></select></br>
+        <div id="p3BaseStats"></div>
+        Ability: <select id="p3Ability" name="p3Ability"></select><br>
+        Moves:<br>
+        <select id="p3Move1" name="p3Move1"></select><br>
+        <select id="p3Move2" name="p3Move2"></select><br>
+        <select id="p3Move3" name="p3Move3"></select><br>
+        <select id="p3Move4" name="p3Move4"></select><br>
+        EVs: <section>
+            Hp:<input type="range" value=0 min="0" max="255" id="p3HpEV" name="p3HpEV"><span id="p3HpEVOutput">0</span><br>
+            Atk:<input type="range" value=0 min="0" max="255" id="p3AttackEV" name="p3AttackEV"><span id="p3AttackEVOutput">0</span><br>
+            Def:<input type="range" value=0 min="0" max="255" id="p3DefenseEV" name="p3DefenseEV"><span id="p3DefenseEVOutput">0</span><br>
+            SpAtk:<input type="range" value=0 min="0" max="255" id="p3SpAttackEV" name="p3SpAttackEV"><span id="p3SpAttackEVOutput">0</span><br>
+            SpDef:<input type="range" value=0 min="0" max="255" id="p3SpDefenseEV" name="p3SpDefenseEV"><span id="p3SpDefenseEVOutput">0</span><br>
+            Speed:<input type="range" value=0 min="0" max="255" id="p3SpeedEV" name="p3SpeedEV"><span id="p3SpeedEVOutput">0</span><br>
+        </section><br>
+        Running stats: <span id="p3CalculatedStats"></span>
+        <hr>
+
+        Fakemon 4: <select id="p4" name="p4"></select></br>
+        <div id="p4BaseStats"></div>
+        Ability: <select id="p4Ability" name="p4Ability"></select><br>
+        Moves:<br>
+        <select id="p4Move1" name="p4Move1"></select><br>
+        <select id="p4Move2" name="p4Move2"></select><br>
+        <select id="p4Move3" name="p4Move3"></select><br>
+        <select id="p4Move4" name="p4Move4"></select><br>
+        EVs: <section>
+            HP:<input type="range" value=0 min="0" max="255" id="p4HpEV" name="p4HpEV"><span id="p4HpEVOutput">0</span><br>
+            Atk:<input type="range" value=0 min="0" max="255" id="p4AttackEV" name="p4AttackEV"><span id="p4AttackEVOutput">0</span><br>
+            Def:<input type="range" value=0 min="0" max="255" id="p4DefenseEV" name="p4DefenseEV"><span id="p4DefenseEVOutput">0</span><br>
+            SpAtk:<input type="range" value=0 min="0" max="255" id="p4SpAttackEV" name="p4SpAttackEV"><span id="p4SpAttackEVOutput">0</span><br>
+            SpDef:<input type="range" value=0 min="0" max="255" id="p4SpDefenseEV" name="p4SpDefenseEV"><span id="p4SpDefenseEVOutput">0</span><br>
+            Speed:<input type="range" value=0 min="0" max="255" id="p4SpeedEV" name="p4SpeedEV"><span id="p4SpeedEVOutput">0</span><br>
+        </section><br>
+        Running stats: <span id="p4CalculatedStats"></span>
+        <hr>
+
+        Fakemon 5: <select id="p5" name="p5"></select></br>
+        <div id="p5BaseStats"></div>
+        Ability: <select id="p5Ability" name="p5Ability"></select><br>
+        Moves:<br>
+        <select id="p5Move1" name="p5Move1"></select><br>
+        <select id="p5Move2" name="p5Move2"></select><br>
+        <select id="p5Move3" name="p5Move3"></select><br>
+        <select id="p5Move4" name="p5Move4"></select><br>
+        EVs: <section>
+            HP:<input type="range" value=0 min="0" max="255" id="p5HpEV" name="p5HpEV"><span id="p5HpEVOutput">0</span><br>
+            Atk:<input type="range" value=0 min="0" max="255" id="p5AttackEV" name="p5AttackEV"><span id="p5AttackEVOutput">0</span><br>
+            Def:<input type="range" value=0 min="0" max="255" id="p5DefenseEV" name="p5DefenseEV"><span id="p5DefenseEVOutput">0</span><br>
+            SpAtk:<input type="range" value=0 min="0" max="255" id="p5SpAttackEV" name="p5SpAttackEV"><span id="p5SpAttackEVOutput">0</span><br>
+            SpDef:<input type="range" value=0 min="0" max="255" id="p5SpDefenseEV" name="p5SpDefenseEV"><span id="p5SpDefenseEVOutput">0</span><br>
+            Speed:<input type="range" value=0 min="0" max="255" id="p5SpeedEV" name="p5SpeedEV"><span id="p5SpeedEVOutput">0</span><br>
+        </section><br>
+        Running stats: <span id="p5CalculatedStats"></span>
+        <hr>
+
+        Fakemon 6: <select id="p6" name="p6"></select></br>
+        <div id="p6BaseStats"></div>
+        Ability: <select id="p6Ability" name="p6Ability"></select><br>
+        Moves:<br>
+        <select id="p6Move1" name="p6Move1"></select><br>
+        <select id="p6Move2" name="p6Move2"></select><br>
+        <select id="p6Move3" name="p6Move3"></select><br>
+        <select id="p6Move4" name="p6Move4"></select><br>
+        EVs: <section>
+            HP:<input type="range" value=0 min="0" max="255" id="p6HpEV" name="p6HpEV"><span id="p6HpEVOutput">0</span><br>
+            Atk:<input type="range" value=0 min="0" max="255" id="p6AttackEV" name="p6AttackEV"><span id="p6AttackEVOutput">0</span><br>
+            Def:<input type="range" value=0 min="0" max="255" id="p6DefenseEV" name="p6DefenseEV"><span id="p6DefenseEVOutput">0</span><br>
+            SpAtk:<input type="range" value=0 min="0" max="255" id="p6SpAttackEV" name="p6SpAttackEV"><span id="p6SpAttackEVOutput">0</span><br>
+            SpDef:<input type="range" value=0 min="0" max="255" id="p6SpDefenseEV" name="p6SpDefenseEV"><span id="p6SpDefenseEVOutput">0</span><br>
+            Speed:<input type="range" value=0 min="0" max="255" id="p6SpeedEV" name="p6SpeedEV"><span id="p6SpeedEVOutput">0</span><br>
+        </section><br>
+        Running stats: <span id="p6CalculatedStats"></span><hr>
+        <button id="saveTeam">Save Team</button>
+    </section>
+</body>
+</html>

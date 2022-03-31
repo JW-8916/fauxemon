@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fauxemon Login</title>
+</head>
+<body>
+<h1>Welcome</h1>
+<p>Please login</p>
+<form action="/login" method="post">
+    Username:<input type="text" id="username" name="username"><br/>
+    Password:<input type="password" id="password" name="password"><br/>
+    <input type="submit" value="Login">
+</form>
+<a href="/register">Not registered?</a>
+<% if(error){ %>
+<p><%=error%></p>
+<%}%>
+</body>
+</html>

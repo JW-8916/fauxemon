@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fauxemon Home</title>
+    <script src="./socket.io/socket.io.js" type="text/javascript"></script>
+    <script src="./views/js/chat.js" type="text/javascript"></script>
+    <script src="./views/js/home_page_scripts.js" type="text/javascript"></script>
+</head>
+<body>
+<a href="/logout">Logout</a>
+<a href="/teambuilder">Team Builder</a>
+<p>Welcome back, <span id="username"><%=username%></span></p>
+    <ul id="messageList"></ul>
+    <form id="chatForm" onsubmit="return false">
+        <input id="chatText" autofocus="autofocus" placeholder="Type message here">
+        <input type="button" id="sendButton" name="sendButton" value="Send">
+    </form>
+    <br/>
+
+    <section id="teamSection">
+        <select id="teams"></select>
+    </section>
+    <button id="playButton">Play with this team</button>
+    <br/><br/>
+
+    <a href="/ladder">Ladder</a>
+</body>
+</html>
