@@ -3,3 +3,5 @@ and relate it back to the thing that made me want to learn programming to begin 
 and I wanted to put it all together here! 
 
 This project is open source, the only information not available is the database and it's credentials
+
+the project also currently relies on localhost and is not actually hosted on a domain
