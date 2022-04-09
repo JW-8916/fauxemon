@@ -1,0 +1,34 @@
+table{
+    border-collapse: collapse;
+    text-align: center;
+}
+tr,td,th{
+    padding: .5em;
+    text-align: center;
+    border: 1px solid white;
+    border-collapse: collapse;
+    position: center;
+}
+body{
+    color: white;
+    background-color: rgba(0,0,0,0.7);
+    padding: 1%;
+    position: relative;
+    left: 30%;
+    right: 50%;
+    width: 35%;
+    height: 100%;
+}
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+a:hover, a:active {
+    background-color: red;
+}

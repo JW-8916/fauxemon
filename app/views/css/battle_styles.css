@@ -1,0 +1,8 @@
+#log{
+    left: 820px;
+    position: absolute;
+    top: 0
+}
+#GameCanvas{
+    border: 1px solid black
+}

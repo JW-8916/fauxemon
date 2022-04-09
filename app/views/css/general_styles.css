@@ -1,0 +1,32 @@
+body{
+    background-color: rgba(0,0,0,0.8);
+    border: 3px solid black;
+    border-radius: 15px;
+    color: white;
+    position: absolute;
+    text-align: center;
+    width: 600px;
+    height: 300px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+form{
+    padding: 10px;
+}
+
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+a:hover, a:active {
+    background-color: red;
+}
