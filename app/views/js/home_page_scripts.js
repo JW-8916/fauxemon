@@ -2,6 +2,7 @@
 window.addEventListener("load", function (evt){
     let playButton = document.querySelector("#playButton")
     let teamSection = document.querySelector("#teamSection");
+    let teamsSelect = document.querySelector("#teams")
     if(localStorage.length == 0){
         let p = document.createElement("p")
         p.innerText = "You have no teams! Click on Team Builder to make a team"
@@ -10,7 +11,6 @@ window.addEventListener("load", function (evt){
         playButton.disabled = true
     }
     else{
-        let teamsSelect = document.querySelector("#teams")
         for(let i = 0; i < localStorage.length; i++){
             let option = document.createElement("option")
             option.value = localStorage.key(i);
@@ -21,17 +21,19 @@ window.addEventListener("load", function (evt){
 
     playButton.addEventListener("click",function (evt){
         if(playButton.innerText != "Cancel"){
-            socket.emit("play")
+            let currentTeam = localStorage.getItem(teamsSelect.value)
+            socket.emit("play", currentTeam)
+            teamsSelect.disabled = true;
             playButton.innerText = "Cancel";
         }
         else{
             socket.emit("cancel")
+            teamsSelect.disabled = false;
             playButton.innerText = "Play with this team"
         }
     })
 
     socket.on("redirect", ()=>{
-        console.log("redirect!")
         window.location.href = "/battle"
     })
 })

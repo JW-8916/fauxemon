@@ -216,10 +216,10 @@ app.get("/ladder", (req, res)=>{
 
 app.get("/battle", (req, res)=>{
     if(req.session.loggedin){
-        res.render("ladder")
+        res.render("battle")
     }
     else{
-        res.render("battle")
+        res.redirect("/")
     }
 })
 
@@ -242,14 +242,10 @@ require("./app/routes/user.routes")(app)
 //this is a list of SOCKET OBJECTS
 let queue = []
 let currentRoom = 1000;
-let checkQueue = false;
 
 cron.schedule('*/3 * * * * *', ()=>{
-    checkQueue = !checkQueue;
     let d = new Date();
     console.log(queue.length + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
-    //this runs every 3 seconds. The purpose of the checkQueue is to make it so that if the user clicks the play button, it doesn't just shove the user
-    //right into the thick of the fight, it gives it an extra second to breathe and make it more seamless than rough and jagged
 })
 
 io.on("connection", function(socket){
@@ -283,17 +279,14 @@ io.on("connection", function(socket){
         io.emit("chat_message", (`${time}-<strong>${socket.username}:</strong>${message}`))
     })
 
-    socket.on("play", ()=>{
+    //this is for when the client clicks the "play with this team" button. the team json object is also passed in
+    socket.on("play", (currentTeam)=>{
+        socket.currentTeam = currentTeam;
         queue.push(socket)
         if(queue.length >= 2){
             currentRoom+=1;
-            let p1 = queue.shift();
-            p1.join("battle"+currentRoom)
-            let p2 = queue.shift()
-            p2.join("battle"+currentRoom)
-            Game.battle(p1, p2, io, currentRoom-1)
+            Game.battle(queue.shift(), queue.shift(), io, currentRoom-1)
         }
-        checkQueue = false;
     })
 
     socket.on("cancel", ()=>{

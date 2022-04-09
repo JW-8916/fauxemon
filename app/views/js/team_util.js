@@ -61,6 +61,7 @@ window.addEventListener("load", function (evt){
         formSection.style.display = "block"
         newTeamButton.disabled = true;
         teamsSection.style.display = "none"
+        let teamsTitle = document.querySelector("#teamTitle").style.display = "none"
     })
 
     let saveTeamButton = document.querySelector("#saveTeam")
