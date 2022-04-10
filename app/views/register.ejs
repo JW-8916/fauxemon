@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Fauxemon Register</title>
+    <link href="./views/css/background_style.css" rel="stylesheet">
+    <link href="./views/css/general_styles.css" rel="stylesheet">
 </head>
 <body>
     <h1>Register</h1>
     <form method="post" action="/register">
-        Username:<input type="text" name="username" id="username"><br/>
-        Password:<input type="password" name="password" id="password"><br/>
-        Confirm Password:<input type="password" name="confirmPass" id="confirmPass">
+        Username:      <input type="text" name="username" id="username"><br/>
+        Password:        <input type="password" name="password" id="password"><br/>
+        Confirm Password:<input type="password" name="confirmPass" id="confirmPass"><br/>
         <input type="submit" value="Register">
     </form>
     <a href="/login">Already registered?</a>

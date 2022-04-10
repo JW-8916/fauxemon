@@ -7,15 +7,14 @@
     <script src="./views/js/chat.js" type="text/javascript"></script>
     <script src="./views/js/home_page_scripts.js" type="text/javascript"></script>
     <link href="./views/css/background_style.css" rel="stylesheet">
-    <link href="./views/css/general_styles.css" rel="stylesheet">
     <link href="./views/css/home_styles.css" rel="stylesheet">
 </head>
-<body>
+<body id="body">
     <a href="/logout">Logout</a>
     <a href="/ladder">Ladder</a>
     <a href="/teambuilder">Team Builder</a>
 
-    <p>Welcome back, <span id="username"><%=username%></span></p>
+    <p>Welcome back, <span id="username"><%=username%>.</span></p>
 
     <div id="chat">
         <ul id="messageList"></ul>
@@ -23,7 +22,7 @@
             <input id="chatText" autofocus="autofocus" placeholder="Type message here">
             <input type="button" id="sendButton" name="sendButton" value="Send">
         </form>
-    </div>
+    </div><br>
 
     <section id="teamSection">
         <select id="teams"></select>

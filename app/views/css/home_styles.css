@@ -1,0 +1,27 @@
+body{
+    background-color: rgba(0,0,0,0.8);
+    border: 3px solid black;
+    border-radius: 15px;
+    color: white;
+    margin: 0;
+    padding: 7px;
+}
+#chat{
+    position: absolute;
+    left: 50%;
+    max-width: 50%;
+}
+
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+a:hover, a:active {
+    background-color: red;
+}

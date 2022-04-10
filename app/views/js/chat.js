@@ -24,5 +24,6 @@ window.addEventListener("load", function (evt){
         let li = document.createElement("li");
         li.innerHTML = message;
         messageList.prepend(li);
+
     })
 })

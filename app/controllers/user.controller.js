@@ -5,7 +5,10 @@ exports.findAll = (req,res) =>{
     if(req.session.loggedin){
         User.findAll()
             .then( data =>{
-                console.log('data returned from findAll');
+                console.log(data);
+                for(let i = 0; i < data.length; i++){
+                    delete data[i]["dataValues"]["userPassword"]
+                }
                 res.send(data);
             })
             .catch(err =>{
