@@ -22,6 +22,7 @@ window.addEventListener("load", function (evt){
     playButton.addEventListener("click",function (evt){
         if(playButton.innerText != "Cancel"){
             let currentTeam = localStorage.getItem(teamsSelect.value)
+            setCookie("currentTeam", teamsSelect.value, 1);
             socket.emit("play", currentTeam)
             teamsSelect.disabled = true;
             playButton.innerText = "Cancel";
@@ -33,7 +34,8 @@ window.addEventListener("load", function (evt){
         }
     })
 
-    socket.on("redirect", ()=>{
+    socket.on("redirect", (room)=>{
+        setCookie("room", room, 1);
         window.location.href = "/battle"
     })
 })

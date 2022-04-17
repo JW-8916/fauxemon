@@ -243,18 +243,18 @@ require("./app/routes/user.routes")(app)
 let queue = []
 let currentRoom = 1000;
 
-cron.schedule('*/3 * * * * *', ()=>{
-    let d = new Date();
-    console.log(queue.length + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
-})
+//cron.schedule('*/3 * * * * *', ()=>{
+//    let d = new Date();
+//    console.log(queue.length + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds())
+//})*/
 
 io.on("connection", function(socket){
-    console.log("connected " + socket.id)
+    //console.log("connected " + socket.id)
 
     //Server gets username, assign the username to the socket
     socket.on("username", (username)=>{
-        socket.username = username;
-        console.log(socket.username);
+        socket.username = username.slice(0, username.length-1);
+        //console.log(socket.username);
     })
 
     //Client disconnected, just for logging purposes
@@ -285,13 +285,22 @@ io.on("connection", function(socket){
         queue.push(socket)
         if(queue.length >= 2){
             currentRoom+=1;
-            Game.battle(queue.shift(), queue.shift(), io, currentRoom-1)
+            queue.shift().join("battle"+currentRoom-1)
+            queue.shift().join("battle"+currentRoom-1)
+            io.in("battle"+currentRoom-1).emit("redirect", (currentRoom-1))
         }
     })
 
     socket.on("cancel", ()=>{
         let i = queue.indexOf(socket)
         queue.splice(i, 1);
+    })
+
+    socket.on("rejoin", (username, team, room)=>{
+        socket.join("battle"+room)
+        socket.username = username;
+        socket.team = team;
+        Game.battle(io, room), socket;
     })
 })
 

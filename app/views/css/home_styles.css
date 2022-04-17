@@ -5,11 +5,19 @@ body{
     color: white;
     margin: 0;
     padding: 7px;
+    width: 48.5%;
 }
 #chat{
+    background-color: rgba(0,0,0,0.8);
+    border: 3px solid black;
+    border-radius: 15px;
     position: absolute;
     left: 50%;
-    max-width: 50%;
+    width: 48.5%;
+    text-wrap: normal;
+    overflow-wrap: break-word;
+    bottom: 0;
+    padding: 5px;
 }
 
 a:link, a:visited {
