@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <title>Battle</title>
     <script src="./socket.io/socket.io.js" type="text/javascript"></script>
-    <!--the reason for including the chat.js is to keep the socket object from dying and disconnecting on redirect-->
-    <script src="./views/js/socket_init.js" type="text/javascript"></script>
     <script src="./views/js/cookie_util.js" type="text/javascript"></script>
     <script src="./views/js/battle_script.js" type="text/javascript"></script>
     <link href="./views/css/battle_styles.css" rel="stylesheet">
+    <link href="./views/css/background_style.css" rel="stylesheet">
 </head>
 <body>
-    <canvas id="GameCanvas" width="800" height="400"></canvas>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
     <!--this is the area where all of the game's graphics are handled. that includes the pokemon, the names, health bars, and the animations-->
-    <div id="teamSection"></div>
+    <!--<div><button id="quit">Forfeit/Leave</button></div>-->
+    <!--<div id="teamSection"></div>-->
     <!--this is where the buttons for the team are going so if the user wants to switch that turn, they'd click these buttons-->
     <div id="movesSection"></div>
     <!--this is where the buttons for the moves are-->
-    <button id="cancel" value="cancel">Cancel</button>
+    <div><button id="leave">Forfeit</button></div>
+    <br>
+    <img id="myImage" src="">
+    <img id="enemyImage" src="">
+    <img id="battleBackground" src="../views/img/battle_background.png">
 
-    <div id="log">
-        <p>This is the game log</p>
-    </div>
+    <div id="log"><p>TURN 1</p></div>
 </body>
 </html>

@@ -1,9 +1,14 @@
 #log{
-    left: 820px;
+    left: 50%;
     position: absolute;
-    top: 0
+    top: 0;
+    background-color: rgba(0,0,0,0.8);
+    border: 3px solid black;
+    border-radius: 15px;
+    color: white;
+    width: 49%;
 }
-#GameCanvas{
+#gameCanvas{
     border: 1px solid black
 }
 button{

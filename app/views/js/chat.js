@@ -1,4 +1,6 @@
 "use strict"
+var socket = io()
+let username;
 window.addEventListener("load", function (evt){
     username = document.querySelector("#username").innerText;
     socket.emit("username", username);
